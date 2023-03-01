@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    username: keycloak
+    password: password
+    url: jdbc:postgresql://localhost:5432/postgres
+
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      # values: create, create-drop, validate, update
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+      globally_quoted_identifiers: true
+      order_inserts: true
+      jdbc:
+        timezone: UTC
+
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.yaml
+
+logging:
+  level:
+    liquibase: INFO
+
+api:
+  cities:
+    path: /api/cities

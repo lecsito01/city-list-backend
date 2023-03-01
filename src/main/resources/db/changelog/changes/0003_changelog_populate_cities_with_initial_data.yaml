@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      labels: populate initial data from csv
+      author: Levente Orosz
+      preConditions:
+        - onFail: HALT
+        - tableExists:
+            schemaName: public
+            tableName: cities
+        - sequenceExists:
+            schemaName: public
+            sequenceName: city_sequence
+      changes:
+        - loadData:
+            encoding: UTF-8
+            file: classpath:db/changelog/changes/init/cities.csv
+            relativeToChangelogFile: true
+            quotchar: ''''
+            schemaName: public
+            separator: ','
+            tableName: cities
+            columns:
+              - column:
+                  header: id
+                  name: id
+                  type: NUMERIC
+              - column:
+                  header: name
+                  name: name
+                  type: VARCHAR(1000)
+              - column:
+                  header: photo
+                  name: photo
+                  type: VARCHAR(1000)

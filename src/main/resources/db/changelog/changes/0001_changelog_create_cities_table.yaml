@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      labels: create cities
+      author: Levente Orosz
+      changes:
+        - createTable:
+            tableName: cities
+            columns:
+              - column:
+                  remarks: Unique id
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  remarks: name of city
+                  name: name
+                  type: VARCHAR(1000)
+                  constraints:
+                    nullable: false
+              - column:
+                  remarks: photo url
+                  name: photo
+                  type: VARCHAR(1000)
+                  constraints:
+                    nullable: false

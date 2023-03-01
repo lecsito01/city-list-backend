@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - include:
+      relativeToChangelogFile: true
+      file: ./changes/0001_changelog_create_cities_table.yaml
+  - include:
+      relativeToChangelogFile: true
+      file: ./changes/0002_changelog_create_cities_sequence.yaml
+  - include:
+      relativeToChangelogFile: true
+      file: ./changes/0003_changelog_populate_cities_with_initial_data.yaml

@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      labels: create city sequence
+      author: Levente Orosz
+      preConditions:
+        - onFail: HALT
+        - tableExists:
+            schemaName: public
+            tableName: cities
+      changes:
+        - createSequence:
+            dataType: int
+            incrementBy: 1
+            minValue: 0
+            sequenceName: city_sequence
+            startValue: 1
